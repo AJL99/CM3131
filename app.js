@@ -1,5 +1,5 @@
 //default values for data, d suffix stands for default
-var dCurrency = "GBP";
+var dCurrency = "USD";
 var dAmount = 1;
 var dVAT = "IT";
 
