@@ -1,19 +1,25 @@
-const heightDisplay = document.getElementById("image-display");
-const munroTitle = document.getElementById("munro-name");
-const outputSelect = document.getElementById("select-output");
+//default values for data, d suffix stands for default
+var dCurrency = "GBP";
+var dAmount = 1;
+var dVAT = "DE";
 
-const outputList = document.getElementById("list-output");
+const convertBtn = document.getElementById("btn-convert-currency")
 
-const munros = `https://github.com/HVinceH/munros/blob/468fbc6452d26c93000925be397c75fdd7b819c5/public/munros.json`;
+convertBtn.addEventListener("click", convertCurrency);
 
-function updateDispaly(jsonObj){
-  let munroObjArray = jsonObj;
-  let munroObj = munroObjArray[0];
-  console.log(munroObj);
 
-  let munroName = munroObj.Name;
-  let munroHeight = munroObj.Height;
+//allows users to input their home currency and convert an amount into euros
 
-  munroTitle.textContent = munroName;
-  heightDisplay.textContent = munroHeight;
+function convertCurrency(){
+var requestURL = `https://api.exchangerate.host/latest?amount=${dAmount}&base=${dCurrency}&symbols=EUR`;
+
+var request = new XMLHttpRequest();
+request.open('GET', requestURL);
+request.responseType = 'json';
+request.send();
+
+request.onload = function() {
+  var response = request.response;
+  console.log(response);
+  }
 }
