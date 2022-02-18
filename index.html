@@ -5,30 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>D2 Maneger Lite</title>
+    <title>Munro Tracker</title>
 
         <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
         <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+
 
 </head>
 <body>
     <ion-app color="dark">
         <ion-header>
             <ion-toolbar color="primary">
-                <ion-title>D2 Manager Lite</ion-title>
+                <ion-title>Munro Tracker</ion-title>
             </ion-toolbar>
         </ion-header>
 
-        <ion-list style="text-align:center">
-        <ion-item>
-            <p>For full functionality, you must login with your bungie.net account.</p>
-            <ion-button id="auth-btn">Authorise</ion-button>
-        </ion-item>
-        <ion-item>
-            <ion-button>Museums</ion-button>
-        </ion-item>
-        </ion-list>
+        <ion-content>
+            <ion-select id="select-output" placeholder="Chose Munro" ></ion-select>
+
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-title id="munro-name"></ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-img id="image-display" src="placeholder.png"></ion-img>
+                </ion-card-content>
+            </ion-card>
+
+            <ion-list id="list-output"></ion-list>
+        </ion-content>
 
     </ion-app>
     <script src="app.js"></script>
