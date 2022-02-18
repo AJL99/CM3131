@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Munro Tracker</title>
+    <title>Euro Trip</title>
 
         <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
         <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
@@ -14,20 +14,37 @@
 
 </head>
 <body>
-    <ion-app color="dark">
+    <ion-app>
         <ion-header>
             <ion-toolbar color="primary">
-                <ion-title>Munro Tracker</ion-title>
+                <ion-title>Euro Trip</ion-title>
             </ion-toolbar>
         </ion-header>
 
         <ion-content>
-            <ion-select id="select-output" placeholder="Chose Munro" ></ion-select>
+            <ion-select id="select-output" placeholder="Chose Home Currency" ></ion-select>
 
             <ion-card>
-                <ion-card-header>
-                    <ion-card-title id="munro-name"></ion-card-title>
-                </ion-card-header>
+                <ion-item>
+                    <!--user enters amount of currency here-->
+                    <ion-label>
+                        <ion-input placeholder="Enter Currency Amount" type="number" id="input-lbl"></ion-input>
+                    </ion-label>
+                    <!--currency converted to euros here-->
+                    <ion-item>
+                        <ion-label id="output-lbl"></ion-label>
+                    </ion-item>
+                </ion-item>
+                    <ion-item>
+                        <ion-button id="btn-convert-currency">
+                            Convert
+                        </ion-button>
+                    </ion-item>
+                    <ion-item>
+                        <ion-button id="btn-VAT">
+                            VAT
+                        </ion-button>
+                    </ion-item>
                 <ion-card-content>
                     <ion-img id="image-display" src="placeholder.png"></ion-img>
                 </ion-card-content>
