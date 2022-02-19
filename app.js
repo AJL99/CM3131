@@ -1,3 +1,5 @@
+window.onload = init; //runs the code after the HTML is loaded
+function init(){
 //default values for data, d suffix stands for default
 var dCurrency = "GBP";
 var dAmount = 1;
@@ -24,12 +26,16 @@ request.send();
 //this is quite messy but the only way I could figure it out
 request.onload = function() {
   var response = request.response;
-  console.log(response); //is grabs the response from the API after you input your number
+  //console.log(response); //is grabs the response from the API after you input your number
   let convertedNumber = JSON.stringify(response.rates); //this turns the amount of money into a string, but that string is messy and has waste that I want to remove
   let currencyToChop = convertedNumber.length; //due to number having different length depending on the inputed number, you need to know the exact length of the string so that you can change the substring command to always remove only the last character
   let outputNumber = convertedNumber.substring(7, currencyToChop-1); //this removed the first 7 characters from the string as the first 7 characters will always be the same amount of junk, it then removes the curly bracket at the end
   outputText.textContent = `${dAmount}` + ` ${dCurrency} = €` + outputNumber; //finally the amount in euros is shown with non of the junk
   }
+
+  const grabCurrency = document.getElementById("ion-select-option");
+  console.log(grabCurrency);
+
 }
 //shows the user the VAT rates of a selected country, and shows how much they can expect prices to differ from the european average
 function findVAT(){
@@ -56,7 +62,11 @@ for(var i = 0; i < currencyCodeArray.length; i++) {
   selectOutput.appendChild(newElement);
 }
 }
-
 populateList();
 
+}
+
+//-------------------------------------------------------------------------------------------------
+//         country select page
+//-------------------------------------------------------------------------------------------------
 
