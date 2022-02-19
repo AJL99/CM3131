@@ -56,3 +56,7 @@
 	--ion-color-light-tint: #f5f6f9;
 
 }
+
+::slotted(ion-button){
+	width: -webkit-fill-available;
+}
