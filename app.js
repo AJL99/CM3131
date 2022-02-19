@@ -1,5 +1,5 @@
 //default values for data, d suffix stands for default
-var dCurrency = "USD";
+var dCurrency = "GBP";
 var dAmount = 1;
 var dVAT = "IT";
 
@@ -10,6 +10,7 @@ const vatBtn = document.getElementById("btn-VAT");
 convertBtn.addEventListener("click", convertCurrency);
 vatBtn.addEventListener("click", findVAT);
 
+const currencyCodeArray = ["GBP", "USD", "AUD", "EUR", "BGN", "HRK", "CZK", "DKK", "HUF", "PLN", "RON", "SEK", "CHF", "TRY"]; //decided to make my own array rather than import one as I only wanted EU currencies and a few other large ones
 //allows users to input their home currency and convert an amount into euros
 function convertCurrency(){
   dAmount = amountInput.value;
@@ -42,3 +43,5 @@ request.onload = function() {
   console.log(response);
 }
 }
+
+console.log(currencyCodeArray);
