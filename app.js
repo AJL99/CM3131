@@ -3,6 +3,7 @@ var dCurrency = "GBP";
 var dAmount = 1;
 var dVAT = "IT";
 
+const selectOutput = document.getElementById("select-output");
 const amountInput = document.getElementById("input-lbl");
 const outputText = document.getElementById ("output-lbl");
 const convertBtn = document.getElementById("btn-convert-currency");
@@ -44,4 +45,18 @@ request.onload = function() {
 }
 }
 
-console.log(currencyCodeArray);
+
+function populateList(){
+//populates the pop out list from the array
+for(var i = 0; i < currencyCodeArray.length; i++) {
+  var cCA = currencyCodeArray[i];
+  var newElement = document.createElement('ion-select-option');
+  newElement.textContent = cCA;
+  newElement.value = cCA;
+  selectOutput.appendChild(newElement);
+}
+}
+
+populateList();
+
+
