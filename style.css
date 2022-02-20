@@ -57,6 +57,6 @@
 
 }
 
-::slotted(ion-button){
+ion-button{
 	width: -webkit-fill-available;
 }
