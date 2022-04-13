@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Euro Trip</title>
+
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+        <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+
+
+</head>
+<body>
+    <ion-app>
+        <ion-header>
+            <ion-toolbar color="primary">
+                <ion-title>Euro Trip</ion-title>
+            </ion-toolbar>
+        </ion-header>
+
+        <ion-content>
+            <ion-list-header>Home</ion-list-header>
+
+            <ion-item>
+                <ion-icon color="dark" name="flag-outline"></ion-icon>
+                <ion-button class="homepage-btn" id="btn-SC">Chose Country</ion-button>
+            </ion-item>
+
+            <ion-item>
+                <ion-icon color="dark" name="card-outline"></ion-icon>
+                <ion-button class="homepage-btn" id="btn-EC">Exchance Currency</ion-button>
+            </ion-item>
+
+            <ion-item>
+                <ion-icon color="dark" name="swap-vertical-outline"></ion-icon>
+                <ion-button class="homepage-btn" id="btn-TL">Translate Language</ion-button>
+            </ion-item>
+
+        </ion-content>
+
+    </ion-app>
+    <script src="app.js"></script>
+</body>
+</html>
