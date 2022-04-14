@@ -7,17 +7,40 @@ function init(){
 
 
 const contentFill = document.getElementById("content-shell");
+const homeButton = document.getElementById("btn-home");
 const countryButton = document.getElementById("btn-SC");
 const currencyButton = document.getElementById("btn-EC");
 const translateButton = document.getElementById("btn-TL");
+homeButton.addEventListener("click", goHome);
+currencyButton.addEventListener("click", openCurrencyPage);
 countryButton.addEventListener("click", openCountryPage);
+translateButton.addEventListener("click", openTranslatePage);
 
+function goHome(){
+  contentFill.innerHTML = `
+  <ion-list-header>Home</ion-list-header>
 
+  <ion-item>
+      <ion-icon color="dark" name="flag-outline"></ion-icon>
+      <ion-button class="homepage-btn" id="btn-SC">Chose Country</ion-button>
+  </ion-item>
+  
+  <ion-item>
+      <ion-icon color="dark" name="card-outline"></ion-icon>
+      <ion-button class="homepage-btn" id="btn-EC">Exchange Currency</ion-button>
+  </ion-item>
+  
+  <ion-item>
+      <ion-icon color="dark" name="swap-vertical-outline"></ion-icon>
+      <ion-button class="homepage-btn" id="btn-TL">Translate Language</ion-button>
+  </ion-item>
+  `
+}
 
 //-------------------------------------------------------------------------------------------------
 //         currency page
 //-------------------------------------------------------------------------------------------------
-function openCountryPage(){
+function openCurrencyPage(){
 
 //when user clicks button it replaces the page content the currency exchanger
   contentFill.innerHTML = `
@@ -126,7 +149,37 @@ populateList();
 //-------------------------------------------------------------------------------------------------
 //         country select page
 //-------------------------------------------------------------------------------------------------
+const countryNamesArray = ["Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden"];
+const countryCodesArray = ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE"];
 
+
+//I am sorry for this abomination of code
+function openCountryPage(){
+  let countryList = ""
+  for (let i=0; i < countryNamesArray.length; i++){
+
+    countryList +=
+    `
+    <ion-item>
+        <ion-avatar><img src="https://countryflagsapi.com/png/${countryCodesArray[i]}"></ion-avatar>
+        <ion-button class="country-btn" id="btn-${countryCodesArray}">${countryNamesArray[i]}</ion-button>
+        <ion-button id="btn-fav-${countryCodesArray}"><ion-icon color="dark" name="star-outline"></ion-icon></ion-button>
+    </ion-item>  
+    `  
+    ;
+  }
+  contentFill.innerHTML = countryList;
+
+  const buttonFavAT = document.getElementById("btn-fav-AT");
+
+  buttonFavAT.addEventListener("click",favDebug);
+
+  function favDebug(){
+    buttonFavAT.innerHTML = `
+    <ion-icon color="warning" name="star"></ion-icon>
+    `
+  }
+}
 
 
 
@@ -136,23 +189,26 @@ populateList();
 //         translation page
 //-------------------------------------------------------------------------------------------------
 
-
-
-/*
-class NavHome extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
-    <ion-header>
-    <ion-toolbar color="danger">
-        <ion-title>Animal Navigation</ion-title>
-    </ion-toolbar>
-</ion-header>
-    `
-  }
+function openTranslatePage(){
+  contentFill.innerHTML = `
+  <ion-item>
+  <!--user enteres desired translation here-->
+  <ion-label>
+      <ion-input placeholder="Enter Text here" id="lang-input-lbl"></ion-input>
+  </ion-label>
+</ion-item>
+<ion-item>
+  <ion-label>
+      <ion-button>translate</ion-button>
+      <ion-icon name="arrow-down-circle-outline"></ion-icon>
+  </ion-label>
+</ion-item>
+<ion-item>
+  <ion-label>
+      <p>output</p>
+  </ion-label>
+</ion-item>
+  `
 }
 
-customElements.define('main-nav-home', NavHome);
-
-const nav = document.getElementById("ion-nav");
-*/
 }
