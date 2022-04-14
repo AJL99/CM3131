@@ -1,10 +1,59 @@
 //-------------------------------------------------------------------------------------------------
-//         currency page
+//         home page
 //-------------------------------------------------------------------------------------------------
-
 window.onload = init; //runs the code after the HTML is loaded
 function init(){
-//default values for data, d suffix stands for default
+
+
+
+const contentFill = document.getElementById("content-shell");
+const countryButton = document.getElementById("btn-SC");
+const currencyButton = document.getElementById("btn-EC");
+const translateButton = document.getElementById("btn-TL");
+countryButton.addEventListener("click", openCountryPage);
+
+
+
+//-------------------------------------------------------------------------------------------------
+//         currency page
+//-------------------------------------------------------------------------------------------------
+function openCountryPage(){
+
+//when user clicks button it replaces the page content the currency exchanger
+  contentFill.innerHTML = `
+  <ion-select id="select-output" placeholder="Chose Home Currency" ></ion-select>
+
+            <ion-card>
+                <ion-item>
+                    <!--user enters amount of currency here-->
+                    <ion-label>
+                        <ion-input placeholder="Enter Currency Amount" type="number" id="input-lbl"></ion-input>
+                    </ion-label>
+                    <!--currency converted to euros here-->
+
+                </ion-item>
+                <ion-item>
+                    <ion-label id="output-lbl"></ion-label>
+                </ion-item>
+                    <ion-item>
+                        <ion-button id="btn-convert-currency">
+                            Convert
+                        </ion-button>
+                    </ion-item>
+                    <ion-item>
+                        <ion-button id="btn-VAT">
+                            Show VAT
+                        </ion-button>
+                    </ion-item>
+                <ion-card-content>
+                    <ion-img id="image-display" src="placeholder.png"></ion-img>
+                </ion-card-content>
+            </ion-card>
+
+            <ion-list id="list-output">test</ion-list> <!--used for debugging-->
+  `
+
+  //default values for data, d suffix stands for default
 var dCurrency = "GBP";
 var dAmount = 1;
 var dVAT = "IT";
@@ -17,7 +66,7 @@ const vatBtn = document.getElementById("btn-VAT");
 convertBtn.addEventListener("click", convertCurrency);
 vatBtn.addEventListener("click", findVAT);
 
-const currencyCodeArray = ["GBP", "USD", "AUD", "EUR", "BGN", "HRK", "CZK", "DKK", "HUF", "PLN", "RON", "SEK", "CHF", "TRY"]; //decided to make my own array rather than import one as I only wanted EU currencies and a few other large ones
+const currencyCodeArray = ["GBP", "USD", "AUD", "EUR", "BGN", "HRK", "CZK", "DKK", "HUF", "PLN", "RON", "SEK", "CHF",]; //decided to make my own array rather than import one as I only wanted EU currencies and a few other large ones
 //allows users to input their home currency and convert an amount into euros
 function convertCurrency(){
   dAmount = amountInput.value;
@@ -68,7 +117,11 @@ for(var i = 0; i < currencyCodeArray.length; i++) {
 }
 populateList();
 
-}
+ }
+
+
+
+
 
 //-------------------------------------------------------------------------------------------------
 //         country select page
@@ -83,3 +136,23 @@ populateList();
 //         translation page
 //-------------------------------------------------------------------------------------------------
 
+
+
+/*
+class NavHome extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
+    <ion-header>
+    <ion-toolbar color="danger">
+        <ion-title>Animal Navigation</ion-title>
+    </ion-toolbar>
+</ion-header>
+    `
+  }
+}
+
+customElements.define('main-nav-home', NavHome);
+
+const nav = document.getElementById("ion-nav");
+*/
+}
