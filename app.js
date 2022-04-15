@@ -10,12 +10,11 @@ const contentFill = document.getElementById("content-shell");
 const homeButton = document.getElementById("btn-home");
 const countryButton = document.getElementById("btn-SC");
 const currencyButton = document.getElementById("btn-EC");
-const translateButton = document.getElementById("btn-TL");
 homeButton.addEventListener("click", goHome);
 currencyButton.addEventListener("click", openCurrencyPage);
 countryButton.addEventListener("click", openCountryPage);
-translateButton.addEventListener("click", openTranslatePage);
 
+//used to reset the homepage. bit of a bodge but mostly works
 function goHome(){
   contentFill.innerHTML = `
   <ion-list-header>Home</ion-list-header>
@@ -28,11 +27,6 @@ function goHome(){
   <ion-item>
       <ion-icon color="dark" name="card-outline"></ion-icon>
       <ion-button class="homepage-btn" id="btn-EC">Exchange Currency</ion-button>
-  </ion-item>
-  
-  <ion-item>
-      <ion-icon color="dark" name="swap-vertical-outline"></ion-icon>
-      <ion-button class="homepage-btn" id="btn-TL">Translate Language</ion-button>
   </ion-item>
   `
 }
@@ -69,7 +63,7 @@ function openCurrencyPage(){
                         </ion-button>
                     </ion-item>
                 <ion-card-content>
-                    <ion-img id="image-display" src="placeholder.png"></ion-img>
+                    <ion-item id="image-display"><img src="https://countryflagsapi.com/png/${localStorage.getItem("country")}"></ion-item>
                 </ion-card-content>
             </ion-card>
 
@@ -79,7 +73,7 @@ function openCurrencyPage(){
   //default values for data, d suffix stands for default
 var dCurrency = "GBP";
 var dAmount = 1;
-var dVAT = "IT";
+var dVAT = localStorage.getItem("country");
 
 const selectOutput = document.getElementById("select-output");
 const amountInput = document.getElementById("input-lbl");
@@ -138,6 +132,8 @@ for(var i = 0; i < currencyCodeArray.length; i++) {
   selectOutput.appendChild(newElement);
 }
 }
+
+
 populateList();
 
  }
@@ -153,7 +149,7 @@ const countryNamesArray = ["Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus"
 const countryCodesArray = ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE"];
 
 
-//array to populate the countries list to save having to write the same code 27 times
+//array to populate the countries list to save having to write the same code 27 times... I know I ended up writing the same thing 27 times later but at least this saved 90 lines of code...
 function openCountryPage(){
   let countryList = ""
   for (let i=0; i < countryNamesArray.length; i++){
@@ -315,29 +311,5 @@ function openCountryPage(){
 }
 
 }
-//-------------------------------------------------------------------------------------------------
-//         translation page
-//-------------------------------------------------------------------------------------------------
 
-function openTranslatePage(){
-  contentFill.innerHTML = `
-  <ion-item>
-  <!--user enteres desired translation here-->
-  <ion-label>
-      <ion-input placeholder="Enter Text here" id="lang-input-lbl"></ion-input>
-  </ion-label>
-</ion-item>
-<ion-item>
-  <ion-label>
-      <ion-button>translate</ion-button>
-      <ion-icon name="arrow-down-circle-outline"></ion-icon>
-  </ion-label>
-</ion-item>
-<ion-item>
-  <ion-label>
-      <p>output</p>
-  </ion-label>
-</ion-item>
-  `
-}
 }
