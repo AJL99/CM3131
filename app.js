@@ -67,7 +67,6 @@ function openCurrencyPage(){
                 </ion-card-content>
             </ion-card>
 
-            <ion-list id="list-output">test</ion-list> <!--used for debugging-->
   `
 
   //default values for data, d suffix stands for default
