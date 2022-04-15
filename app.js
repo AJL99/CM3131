@@ -153,7 +153,7 @@ const countryNamesArray = ["Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus"
 const countryCodesArray = ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE"];
 
 
-//I am sorry for this abomination of code
+//array to populate the countries list to save having to write the same code 27 times
 function openCountryPage(){
   let countryList = ""
   for (let i=0; i < countryNamesArray.length; i++){
@@ -162,29 +162,106 @@ function openCountryPage(){
     `
     <ion-item>
         <ion-avatar><img src="https://countryflagsapi.com/png/${countryCodesArray[i]}"></ion-avatar>
-        <ion-button class="country-btn" id="btn-${countryCodesArray}">${countryNamesArray[i]}</ion-button>
-        <ion-button id="btn-fav-${countryCodesArray}"><ion-icon color="dark" name="star-outline"></ion-icon></ion-button>
+        <ion-button class="country-btn" id="btn-${countryCodesArray[i]}">${countryNamesArray[i]}</ion-button>
     </ion-item>  
     `  
     ;
   }
+
+
+  
+
   contentFill.innerHTML = countryList;
+// yes I hardcored this but it wouldn't work without it. forgive me
+  const buttonAT = document.getElementById("btn-AT");
+  buttonAT.addEventListener("click", function(){
+    document.getElementById("debugP").innerHTML=`<img src="https://countryflagsapi.com/png/AT">`;
+  });
 
-  const buttonFavAT = document.getElementById("btn-fav-AT");
+  const buttonBE = document.getElementById("btn-BE");
+  buttonBE.addEventListener("click", function(){
+    document.getElementById("debugP").innerHTML=`<img src="https://countryflagsapi.com/png/BE">`;
+  });
+  const buttonBG = document.getElementById("btn-BG");
+  buttonBG.addEventListener("click",countryChoice);
+    
+  const buttonHR = document.getElementById("btn-HR");
+  buttonHR.addEventListener("click",countryChoice);
+    
+  const buttonCY = document.getElementById("btn-CY");
+  buttonCY.addEventListener("click",countryChoice);
+    
+  const buttonCZ = document.getElementById("btn-CZ");
+  buttonCZ.addEventListener("click",countryChoice);
+    
+  const buttonDK = document.getElementById("btn-DK");
+  buttonDK.addEventListener("click",countryChoice);
+    
+  const buttonEE = document.getElementById("btn-EE");
+  buttonEE.addEventListener("click",countryChoice);
+    
+  const buttonFI = document.getElementById("btn-FI");
+  buttonFI.addEventListener("click",countryChoice);
+    
+  const buttonFR = document.getElementById("btn-FR");
+  buttonFR.addEventListener("click",countryChoice);
+    
+  const buttonDE = document.getElementById("btn-DE");
+  buttonDE.addEventListener("click",countryChoice);
+    
+  const buttonGR = document.getElementById("btn-GR");
+  buttonGR.addEventListener("click",countryChoice);
+    
+  const buttonHU = document.getElementById("btn-HU");
+  buttonHU.addEventListener("click",countryChoice);
+    
+  const buttonIE = document.getElementById("btn-IE");
+  buttonIE.addEventListener("click",countryChoice);
+    
+  const buttonIT = document.getElementById("btn-IT");
+  buttonIT.addEventListener("click",countryChoice);
+    
+  const buttonLV = document.getElementById("btn-LV");
+  buttonLV.addEventListener("click",countryChoice);
+    
+  const buttonLT = document.getElementById("btn-LT");
+  buttonLT.addEventListener("click",countryChoice);
+    
+  const buttonLU = document.getElementById("btn-LU");
+  buttonLU.addEventListener("click",countryChoice);
+    
+  const buttonMT = document.getElementById("btn-MT");
+  buttonMT.addEventListener("click",countryChoice);
+    
+  const buttonNL = document.getElementById("btn-NL");
+  buttonNL.addEventListener("click",countryChoice);
+    
+  const buttonPL = document.getElementById("btn-PL");
+  buttonPL.addEventListener("click",countryChoice);
+    
+  const buttonPT = document.getElementById("btn-PT");
+  buttonPT.addEventListener("click",countryChoice);
+    
+  const buttonRO = document.getElementById("btn-RO");
+  buttonRO.addEventListener("click",countryChoice);
+    
+  const buttonSK = document.getElementById("btn-SK");
+  buttonSK.addEventListener("click",countryChoice);
+    
+  const buttonSI = document.getElementById("btn-SI");
+  buttonSI.addEventListener("click",countryChoice);
+    
+  const buttonES = document.getElementById("btn-ES");
+  buttonES.addEventListener("click",countryChoice);
+    
+  const buttonSE = document.getElementById("btn-SE");
+  buttonSE.addEventListener("click",countryChoice);
 
-  buttonFavAT.addEventListener("click",favDebug);
-
-  function favDebug(){
-    buttonFavAT.innerHTML = `
-    <ion-icon color="warning" name="star"></ion-icon>
-    `
-  }
+  function countryChoice(){
+    
 }
 
-
-
-
-
+}
 //-------------------------------------------------------------------------------------------------
 //         translation page
 //-------------------------------------------------------------------------------------------------
@@ -210,5 +287,4 @@ function openTranslatePage(){
 </ion-item>
   `
 }
-
 }
